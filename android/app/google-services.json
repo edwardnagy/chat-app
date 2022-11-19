@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "445319617982",
+    "project_id": "mirc-chat",
+    "storage_bucket": "mirc-chat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:445319617982:android:ddccaf4557acb2c37f6def",
+        "android_client_info": {
+          "package_name": "com.example.mirc_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "445319617982-dmotudk0p777ojb4ebil8cvcmokvicci.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUjIc4OrLp66c9A-L-K1o1eF0etybD6bI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "445319617982-dmotudk0p777ojb4ebil8cvcmokvicci.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "445319617982-j6kc6gm4rki0ncqb08bg4q1mttblqnij.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.mircChat"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
