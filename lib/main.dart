@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:mirc_chat/di_config.dart';
 import 'package:mirc_chat/ui/root_widget.dart';
 
 import 'firebase_options.dart';
@@ -9,6 +10,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  configureDependencies();
 
   runApp(const MyApp());
 }
