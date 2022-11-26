@@ -20,8 +20,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: RootWidget(),
+    return MaterialApp(
+      theme: ThemeData(
+        dividerTheme: const DividerThemeData(space: 1),
+      ),
+      home: const RootWidget(),
     );
   }
 }

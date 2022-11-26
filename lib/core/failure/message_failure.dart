@@ -1,0 +1,1 @@
+enum MessageFailure { currentUserNotFound }
