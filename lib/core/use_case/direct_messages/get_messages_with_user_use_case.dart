@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:mirc_chat/core/failure/message_failure.dart';
-import 'package:mirc_chat/core/model/direct_messages_holder.dart';
+import 'package:mirc_chat/core/model/thread.dart';
 import 'package:mirc_chat/core/repository/direct_message_repository.dart';
 import 'package:mirc_chat/core/result_wrapper/result.dart';
 import 'package:mirc_chat/core/result_wrapper/result_wrapper.dart';
@@ -16,7 +16,7 @@ class GetMessagesWithUserUseCase {
     this._getProfileUseCase,
   );
 
-  Stream<Result<DirectMessagesHolder?>> call({
+  Stream<Result<Thread?>> call({
     required String recipientUsername,
   }) {
     return wrapStreamToResult(() async* {

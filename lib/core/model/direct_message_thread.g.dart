@@ -1,25 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'direct_messages_holder.dart';
+part of 'direct_message_thread.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-DirectMessagesHolder _$DirectMessagesHolderFromJson(
-        Map<String, dynamic> json) =>
-    DirectMessagesHolder(
+DirectMessageThread _$DirectMessageThreadFromJson(Map<String, dynamic> json) =>
+    DirectMessageThread(
       id: json['id'] as String,
-      participants: Map<String, bool>.from(json['participants'] as Map),
       messages: (json['messages'] as List<dynamic>)
           .map((e) => Message.fromJson(e as Map<String, dynamic>))
           .toList(),
+      participants: Map<String, bool>.from(json['participants'] as Map),
     );
 
-Map<String, dynamic> _$DirectMessagesHolderToJson(
-        DirectMessagesHolder instance) =>
+Map<String, dynamic> _$DirectMessageThreadToJson(
+        DirectMessageThread instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'participants': instance.participants,
       'messages': instance.messages.map((e) => e.toJson()).toList(),
+      'participants': instance.participants,
     };

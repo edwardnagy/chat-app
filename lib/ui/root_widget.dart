@@ -4,8 +4,8 @@ import 'package:mirc_chat/core/model/profile.dart';
 import 'package:mirc_chat/core/result_wrapper/result.dart';
 import 'package:mirc_chat/core/use_case/profile/get_profile_use_case.dart';
 import 'package:mirc_chat/di_config.dart';
-import 'package:mirc_chat/ui/screen/direct_messages_screen.dart';
 import 'package:mirc_chat/ui/screen/loading_screen.dart';
+import 'package:mirc_chat/ui/screen/main_screen.dart';
 import 'package:mirc_chat/ui/screen/set_username_screen.dart';
 import 'package:mirc_chat/ui/screen/sign_in_screen.dart';
 import 'package:mirc_chat/ui/shared/app_error_widget.dart';
@@ -35,7 +35,7 @@ class RootWidget extends StatelessWidget {
                     if (profile == null) {
                       return const SetUsernameScreen();
                     } else {
-                      return const DirectMessagesScreen();
+                      return const MainScreen();
                     }
                   },
                   failure: (error) {

@@ -3,7 +3,7 @@ import 'package:mirc_chat/core/model/profile.dart';
 import 'package:mirc_chat/core/result_wrapper/result.dart';
 import 'package:mirc_chat/core/use_case/direct_messages/get_friends_use_case.dart';
 import 'package:mirc_chat/di_config.dart';
-import 'package:mirc_chat/ui/screen/message_user_screen.dart';
+import 'package:mirc_chat/ui/screen/direct_messages/direct_message_thread_screen.dart';
 import 'package:mirc_chat/ui/shared/app_error_widget.dart';
 
 class DirectMessagesScreen extends StatefulWidget {
@@ -65,7 +65,7 @@ class _DirectMessagesScreenState extends State<DirectMessagesScreen> {
                       onTap: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => MessageUserScreen(
+                            builder: (context) => DirectMessageThreadScreen(
                               recipientUsername: profile.username,
                             ),
                           ),
@@ -84,10 +84,11 @@ class _DirectMessagesScreenState extends State<DirectMessagesScreen> {
         },
       ),
       floatingActionButton: FloatingActionButton(
+        heroTag: 'create_direct_message',
         onPressed: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (context) => const MessageUserScreen(
+              builder: (context) => const DirectMessageThreadScreen(
                 recipientUsername: null,
               ),
             ),

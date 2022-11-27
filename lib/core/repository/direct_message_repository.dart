@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:injectable/injectable.dart';
-import 'package:mirc_chat/core/model/direct_messages_holder.dart';
+import 'package:mirc_chat/core/model/direct_message_thread.dart';
 import 'package:mirc_chat/core/model/message.dart';
 import 'package:mirc_chat/core/remote/firestore_constants.dart';
 import 'package:uuid/uuid.dart';
@@ -11,56 +11,56 @@ class DirectMessageRepository {
 
   const DirectMessageRepository(this._firestore);
 
-  Stream<List<DirectMessagesHolder>> getAllMessages(String username) {
+  Stream<List<DirectMessageThread>> getAllMessages(String username) {
     return _firestore
         .collection(FirestoreConstants.directMessagesCollection)
         .where(
-          '${FirestoreConstants.participantsMapKey}.$username',
+          '${FirestoreConstants.participantsField}.$username',
           isEqualTo: true,
         )
         .snapshots()
         .map(
       (event) {
-        final messageHolders = event.docs
-            .map((doc) => DirectMessagesHolder.fromJson(doc.data()))
+        final threads = event.docs
+            .map((doc) => DirectMessageThread.fromJson(doc.data()))
             .toList();
-        if (messageHolders.isEmpty) {
+        if (threads.isEmpty) {
           return [];
         }
-        messageHolders.sort(
+        threads.sort(
           (a, b) => b.messages.last.creationDate
               .compareTo(a.messages.last.creationDate),
         );
-        return messageHolders;
+        return threads;
       },
     );
   }
 
-  Stream<DirectMessagesHolder?> getMessagesWithUser(
+  Stream<DirectMessageThread?> getMessagesWithUser(
     String username, {
     required String recipientUsername,
   }) {
     return _firestore
         .collection(FirestoreConstants.directMessagesCollection)
         .where(
-          '${FirestoreConstants.participantsMapKey}.$username',
+          '${FirestoreConstants.participantsField}.$username',
           isEqualTo: true,
         )
         .where(
-          '${FirestoreConstants.participantsMapKey}.$recipientUsername',
+          '${FirestoreConstants.participantsField}.$recipientUsername',
           isEqualTo: true,
         )
         .limit(1)
         .snapshots()
         .map(
       (event) {
-        final messageHolders =
-            event.docs.map((doc) => DirectMessagesHolder.fromJson(doc.data()));
+        final threads =
+            event.docs.map((doc) => DirectMessageThread.fromJson(doc.data()));
 
-        if (messageHolders.isEmpty) {
+        if (threads.isEmpty) {
           return null;
         } else {
-          return messageHolders.first;
+          return threads.first;
         }
       },
     );
@@ -71,21 +71,21 @@ class DirectMessageRepository {
     required String recipientUsername,
     required Message message,
   }) async {
-    final existingMessagesHolder = await getMessagesWithUser(
+    final existingThread = await getMessagesWithUser(
       username,
       recipientUsername: recipientUsername,
     ).first;
 
-    if (existingMessagesHolder != null) {
+    if (existingThread != null) {
       await _firestore
           .collection(FirestoreConstants.directMessagesCollection)
-          .doc(existingMessagesHolder.id)
+          .doc(existingThread.id)
           .update({
-        FirestoreConstants.messagesKey:
+        FirestoreConstants.messagesField:
             FieldValue.arrayUnion([message.toJson()])
       });
     } else {
-      final newMessagesHolder = DirectMessagesHolder(
+      final newThread = DirectMessageThread(
         id: const Uuid().v1(),
         participants: {username: true, recipientUsername: true},
         messages: [message],
@@ -93,8 +93,8 @@ class DirectMessageRepository {
 
       await _firestore
           .collection(FirestoreConstants.directMessagesCollection)
-          .doc(newMessagesHolder.id)
-          .set(newMessagesHolder.toJson());
+          .doc(newThread.id)
+          .set(newThread.toJson());
     }
   }
 }

@@ -1,6 +1,6 @@
 import 'package:firebase_ui_auth/firebase_ui_auth.dart' as firebase_ui;
 import 'package:flutter/material.dart';
-import 'package:mirc_chat/ui/screen/profile_screen.dart';
+import 'package:mirc_chat/ui/screen/main_screen.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class SignInScreen extends StatelessWidget {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => const ProfileScreen(),
+              builder: (context) => const MainScreen(),
             ),
           );
         }),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mirc_chat/ui/shared/error_message_extension.dart';
 
 class AppErrorWidget extends StatelessWidget {
   const AppErrorWidget({
@@ -10,9 +11,20 @@ class AppErrorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: Show user-friendly message
-    return Text(
-      error.toString(),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          const Icon(
+            Icons.warning_outlined,
+            size: 64,
+          ),
+          const SizedBox(height: 16),
+          Text(
+            error.toUserFriendlyErrorMessage(),
+          ),
+        ],
+      ),
     );
   }
 }

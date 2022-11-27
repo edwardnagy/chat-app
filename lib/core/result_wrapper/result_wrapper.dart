@@ -20,7 +20,7 @@ Stream<Result<T>> wrapStreamToResult<T>(Stream<T> Function() func) {
 ResultFailure<T> _resultFromFailure<T>(
     Object? failure, StackTrace? stackTrace) {
   log(
-    '${failure.runtimeType}',
+    failure.toString(),
     error: failure,
     stackTrace: stackTrace,
     name: 'ResultWrapper',

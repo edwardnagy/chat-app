@@ -25,10 +25,10 @@ class GetFriendsUseCase {
         }
         yield* _directMessageRepository
             .getAllMessages(username)
-            .map((messagesHolders) => messagesHolders
+            .map((threads) => threads
                 .map(
-                  (messagesHolder) => Profile(
-                    messagesHolder.participants.keys.firstWhere(
+                  (thread) => Profile(
+                    thread.participants.keys.firstWhere(
                       (participantUsername) => participantUsername != username,
                     ),
                   ),
