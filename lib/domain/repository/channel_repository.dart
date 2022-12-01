@@ -10,7 +10,10 @@ abstract class ChannelRepository {
     required String password,
   });
 
-  Future<void> deleteChannel(String channelName);
+  Future<void> deleteChannel({
+    required String username,
+    required String channelName,
+  });
 
   Future<void> joinChannel({
     required String username,

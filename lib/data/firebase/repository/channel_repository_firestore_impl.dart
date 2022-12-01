@@ -61,11 +61,27 @@ class ChannelRepositoryFirestoreImpl implements ChannelRepository {
   }
 
   @override
-  Future<void> deleteChannel(String channelName) {
-    return _firestore
+  Future<void> deleteChannel({
+    required String username,
+    required String channelName,
+  }) async {
+    final channelDoc = _firestore
         .collection(FirestoreConstants.channelsCollection)
-        .doc(channelName)
-        .delete();
+        .doc(channelName);
+
+    // delete threads
+    final threads = await channelDoc
+        .collection(FirestoreConstants.channelThreadsCollection)
+        .where(ChannelThread.ownerUsernameKey, isEqualTo: username)
+        .get();
+    await Future.wait(
+      threads.docs.map(
+        (e) => e.reference.delete(),
+      ),
+    );
+
+    // delete channel
+    await channelDoc.delete();
   }
 
   @override

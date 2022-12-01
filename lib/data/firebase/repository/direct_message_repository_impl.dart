@@ -17,7 +17,7 @@ class DirectMessageRepositoryFirestoreImpl implements DirectMessageRepository {
     return _firestore
         .collection(FirestoreConstants.directMessagesCollection)
         .where(
-          '${DirectMessageThread.participantsFieldKey}.$username',
+          '${DirectMessageThread.participantsKey}.$username',
           isEqualTo: true,
         )
         .snapshots()
@@ -46,11 +46,11 @@ class DirectMessageRepositoryFirestoreImpl implements DirectMessageRepository {
     return _firestore
         .collection(FirestoreConstants.directMessagesCollection)
         .where(
-          '${DirectMessageThread.participantsFieldKey}.$username',
+          '${DirectMessageThread.participantsKey}.$username',
           isEqualTo: true,
         )
         .where(
-          '${DirectMessageThread.participantsFieldKey}.$recipientUsername',
+          '${DirectMessageThread.participantsKey}.$recipientUsername',
           isEqualTo: true,
         )
         .limit(1)
@@ -85,7 +85,7 @@ class DirectMessageRepositoryFirestoreImpl implements DirectMessageRepository {
           .collection(FirestoreConstants.directMessagesCollection)
           .doc(existingThread.id)
           .update({
-        DirectMessageThread.participantsFieldKey:
+        DirectMessageThread.participantsKey:
             FieldValue.arrayUnion([message.toJson()])
       });
     } else {

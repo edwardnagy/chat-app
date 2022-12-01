@@ -6,9 +6,9 @@ part 'direct_message_thread.g.dart';
 
 @JsonSerializable()
 class DirectMessageThread extends Thread {
-  static const participantsFieldKey = 'participants';
+  static const participantsKey = 'participants';
 
-  @JsonKey(name: participantsFieldKey)
+  @JsonKey(name: participantsKey)
   final Map<String, bool> participants;
 
   const DirectMessageThread({

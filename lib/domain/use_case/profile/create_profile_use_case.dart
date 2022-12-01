@@ -23,10 +23,8 @@ class CreateProfileUseCase {
     return wrapFutureToResult(
       () async {
         await _profileRepository.createProfile(profile);
-        await Future.wait([
-          _createUser(profile),
-          _authRepository.updateProfile(profile),
-        ]);
+        await _authRepository.updateProfile(profile);
+        await _createUser(profile);
       },
     );
   }
