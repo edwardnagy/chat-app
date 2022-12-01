@@ -57,6 +57,7 @@ class _DirectMessageThreadScreenState extends State<DirectMessageThreadScreen> {
                 vertical: 16.0,
               ),
               child: TextField(
+                controller: _usernameController,
                 decoration: const InputDecoration(hintText: 'Enter username'),
                 autofocus: true,
                 onSubmitted: (_) => _setUsername(),

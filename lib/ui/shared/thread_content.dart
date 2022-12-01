@@ -133,6 +133,7 @@ class _ThreadContentState extends State<ThreadContent> {
             const SizedBox(width: 8.0),
           ],
         ),
+        SizedBox(height: MediaQuery.of(context).padding.bottom),
       ],
     );
   }
