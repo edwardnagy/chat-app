@@ -10,39 +10,35 @@ import 'package:firebase_auth/firebase_auth.dart' as _i3;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import 'core/repository/auth_repository.dart' as _i9;
-import 'core/repository/channel_repository.dart' as _i11;
-import 'core/repository/direct_message_repository.dart' as _i15;
-import 'core/repository/firebase_impl/auth_repository_firebase_impl.dart'
-    as _i10;
-import 'core/repository/firebase_impl/channel_repository_firestore_impl.dart'
+import 'data/firebase/firebase_injectable_module.dart' as _i30;
+import 'data/firebase/repository/auth_repository_firebase_impl.dart' as _i10;
+import 'data/firebase/repository/channel_repository_firestore_impl.dart'
     as _i12;
-import 'core/repository/firebase_impl/direct_message_repository_impl.dart'
-    as _i16;
-import 'core/repository/firebase_impl/firebase_injectable_module.dart' as _i30;
-import 'core/repository/firebase_impl/profile_repository_firestore_impl.dart'
-    as _i6;
-import 'core/repository/firebase_impl/user_repository_firestore_impl.dart'
-    as _i8;
-import 'core/repository/profile_repository.dart' as _i5;
-import 'core/repository/user_repository.dart' as _i7;
-import 'core/use_case/channel/create_channel_use_case.dart' as _i23;
-import 'core/use_case/channel/delete_channel_use_case.dart' as _i14;
-import 'core/use_case/channel/get_all_channels_use_case.dart' as _i17;
-import 'core/use_case/channel/get_channel_thread_use_case.dart' as _i24;
-import 'core/use_case/channel/get_channels_to_join_use_case.dart' as _i29;
-import 'core/use_case/channel/get_joined_channels_use_case.dart' as _i26;
-import 'core/use_case/channel/get_owned_channels_use_case.dart' as _i28;
-import 'core/use_case/channel/join_channel_use_case.dart' as _i19;
-import 'core/use_case/channel/quit_channel_use_case.dart' as _i20;
-import 'core/use_case/channel/send_message_to_channel_use_case.dart' as _i21;
-import 'core/use_case/direct_messages/get_friends_use_case.dart' as _i25;
-import 'core/use_case/direct_messages/get_messages_with_user_use_case.dart'
+import 'data/firebase/repository/direct_message_repository_impl.dart' as _i16;
+import 'data/firebase/repository/profile_repository_firestore_impl.dart' as _i6;
+import 'data/firebase/repository/user_repository_firestore_impl.dart' as _i8;
+import 'domain/repository/auth_repository.dart' as _i9;
+import 'domain/repository/channel_repository.dart' as _i11;
+import 'domain/repository/direct_message_repository.dart' as _i15;
+import 'domain/repository/profile_repository.dart' as _i5;
+import 'domain/repository/user_repository.dart' as _i7;
+import 'domain/use_case/channel/create_channel_use_case.dart' as _i23;
+import 'domain/use_case/channel/delete_channel_use_case.dart' as _i14;
+import 'domain/use_case/channel/get_all_channels_use_case.dart' as _i17;
+import 'domain/use_case/channel/get_channel_thread_use_case.dart' as _i24;
+import 'domain/use_case/channel/get_channels_to_join_use_case.dart' as _i29;
+import 'domain/use_case/channel/get_joined_channels_use_case.dart' as _i26;
+import 'domain/use_case/channel/get_owned_channels_use_case.dart' as _i28;
+import 'domain/use_case/channel/join_channel_use_case.dart' as _i19;
+import 'domain/use_case/channel/quit_channel_use_case.dart' as _i20;
+import 'domain/use_case/channel/send_message_to_channel_use_case.dart' as _i21;
+import 'domain/use_case/direct_messages/get_friends_use_case.dart' as _i25;
+import 'domain/use_case/direct_messages/get_messages_with_user_use_case.dart'
     as _i27;
-import 'core/use_case/direct_messages/send_message_to_user_use_case.dart'
+import 'domain/use_case/direct_messages/send_message_to_user_use_case.dart'
     as _i22;
-import 'core/use_case/profile/create_profile_use_case.dart' as _i13;
-import 'core/use_case/profile/get_profile_use_case.dart'
+import 'domain/use_case/profile/create_profile_use_case.dart' as _i13;
+import 'domain/use_case/profile/get_profile_use_case.dart'
     as _i18; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
